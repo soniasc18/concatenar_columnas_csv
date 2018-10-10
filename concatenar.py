@@ -20,7 +20,7 @@ if(len(sys.argv)==5):
 				columna2=row.index(columna2)
 				a=a+1
 			else:
-				lista.append(row[columna1]+"/"+row[columna2]) 
+				lista.append(row[columna1]+"-"+row[columna2]) 
 	with open(ficheroin,'r') as csvinput:
 		with open(ficheroout, 'w') as csvoutput:
 			writer = csv.writer(csvoutput)
@@ -30,6 +30,7 @@ if(len(sys.argv)==5):
 					writer.writerow(row+['tstamp'])
 				else:
 					writer.writerow(row+[lista[i-1]])
+					i=i+1
 	print "Hecho."
 else:
 	print "ERROR."
