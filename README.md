@@ -9,3 +9,8 @@ Script de Python que permite concatenar dos columnas de un mismo fichero formato
 	
 	print "	--COLUMNA1 y COLUMNA2 son las columnas que se desean concatenar."
 ```
+El siguiente ejemplo trata de concatenar las columnas Dia y Hora del fichero data.csv y genera un nuevo fichero denominado dataout.csv que puede estar creado o se crea de manera automática.
+
+```
+python concatenar.py data.csv dataout.csv Dia Hora
+```
