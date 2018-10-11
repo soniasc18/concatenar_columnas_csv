@@ -5,14 +5,13 @@ print "---- Script para concatenar columnas ----"
 a=0
 i=0
 lista = []
-#Si el fichero de salida no existe, lo crea
-
 if(len(sys.argv)==5):
 	columna1 = sys.argv[3]
 	columna2 = sys.argv[4]
 	ficheroin = sys.argv[1]
 	ficheroout = sys.argv[2]
-	with open(ficheroin, 'rb') as f:
+	with open(ficheroin, 'rbU') as f:
+		#row_count = sum(1 for row in f)
 		reader = csv.reader(f)
 		for row in reader:
 			if a<1: #estamos en la primera linea
@@ -21,16 +20,17 @@ if(len(sys.argv)==5):
 				a=a+1
 			else:
 				lista.append(row[columna1]+"-"+row[columna2]) 
+				if (a!=525519):
+					a=a+1
 	with open(ficheroin,'r') as csvinput:
 		with open(ficheroout, 'w') as csvoutput:
 			writer = csv.writer(csvoutput)
 			for row in csv.reader(csvinput):
-				if i<1:
-					i=i+1
+				i=i+1
+				if i==1:
 					writer.writerow(row+['tstamp'])
 				else:
-					writer.writerow(row+[lista[i-1]])
-					i=i+1
+					writer.writerow(row+[lista[i-2]])
 	print "Hecho."
 else:
 	print "ERROR."
